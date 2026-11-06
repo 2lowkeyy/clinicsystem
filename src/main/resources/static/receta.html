@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Receta Médica Oficial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --papel: #fbf8f1;
+  --tinta: #1b2638;
+  --tinta2: #55607a;
+  --linea: #cbbfa7;
+  --rojo: #c8102e;
+  --azul: #2b4c7e;
+  --serif: "Fraunces", Georgia, serif;
+  --mono: "IBM Plex Mono", "Courier New", monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 30px 20px;
+  background: #2a2f38;
+  color: var(--tinta);
+  font: 14px/1.5 var(--mono);
+}
+
+#hoja {
+  max-width: 680px;
+  margin: 0 auto;
+  background: var(--papel);
+  padding: 38px 44px;
+  border: 2px solid var(--tinta);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, .45);
+  position: relative;
+}
+
+#hoja::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  border: 1px solid var(--linea);
+  pointer-events: none;
+}
+
+.encabezado {
+  text-align: center;
+  border-bottom: 2px solid var(--tinta);
+  padding-bottom: 14px;
+}
+
+.cruz-sm {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  margin: 0 auto 8px;
+}
+.cruz-sm::before, .cruz-sm::after {
+  content: "";
+  position: absolute;
+  background: var(--rojo);
+}
+.cruz-sm::before { left: 9px; top: 0; width: 6px; height: 24px; }
+.cruz-sm::after { left: 0; top: 9px; width: 24px; height: 6px; }
+
+.encabezado h1 {
+  margin: 0;
+  font: 800 24px var(--serif);
+  letter-spacing: -0.5px;
+}
+.encabezado .doc {
+  margin-top: 4px;
+  font: 600 16px var(--serif);
+  color: var(--azul);
+}
+.encabezado .esp {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--tinta2);
+  margin-top: 2px;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 8px 16px;
+  margin: 18px 0;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed var(--linea);
+  font-size: 13px;
+}
+.meta div b {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--tinta2);
+  display: block;
+  font-weight: 500;
+}
+
+.rx-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 8px;
+}
+.rx-glyph {
+  font: italic 700 38px/1 var(--serif);
+  color: var(--rojo);
+}
+.rx-title {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--tinta2);
+}
+
+.cuerpo {
+  margin: 8px 0 24px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font: 500 15px/1.7 var(--mono);
+  background: rgba(255, 255, 255, .4);
+  border: 1px solid var(--linea);
+  padding: 14px 18px;
+  min-height: 90px;
+}
+
+.seccion-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--tinta2);
+  margin: 14px 0 4px;
+}
+
+.firma-wrap {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  gap: 20px;
+}
+.sello-receta {
+  border: 2px dashed var(--azul);
+  color: var(--azul);
+  padding: 10px;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 1px;
+  transform: rotate(-2deg);
+  border-radius: 4px;
+}
+.sello-receta b { display: block; font-size: 14px; }
+.raya-firma {
+  text-align: center;
+}
+.raya {
+  border-top: 1.5px solid var(--tinta);
+  margin-bottom: 6px;
+}
+.firma-nombre { font: 600 13px var(--serif); }
+.firma-cargo { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--tinta2); }
+
+.pie-folio {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--tinta2);
+  border-top: 1px solid var(--linea);
+  padding-top: 8px;
+}
+
+.acciones {
+  text-align: center;
+  margin-top: 20px;
+}
+.acciones button {
+  font: 600 12px var(--mono);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--papel);
+  background: var(--tinta);
+  border: 1.5px solid var(--tinta);
+  padding: 8px 18px;
+  cursor: pointer;
+  margin: 0 6px;
+}
+.acciones button.alt { background: transparent; color: #fff; border-color: #888; }
+
+.err { color: var(--rojo); text-align: center; padding: 20px; }
+
+@media print {
+  body { background: #fff; padding: 0; }
+  #hoja { border: none; box-shadow: none; max-width: 100%; padding: 18px 24px; }
+  #hoja::before { border: none; }
+  .acciones { display: none; }
+}
+</style>
+</head>
+<body>
+<div id="hoja">
+  <div class="encabezado">
+    <div class="cruz-sm"></div>
+    <h1 id="clinica"></h1>
+    <div class="doc" id="medico"></div>
+    <div class="esp"><span id="especialidad"></span> // Exequátur: <span id="exequatur"></span></div>
+  </div>
+
+  <div class="meta">
+    <div><b>Paciente</b><span id="paciente"></span></div>
+    <div><b>Fecha</b><span id="fecha"></span></div>
+    <div><b>Cédula / Identificación</b><span id="cedula"></span></div>
+    <div><b>Edad</b><span id="edad"></span></div>
+  </div>
+
+  <div class="rx-row">
+    <div class="rx-glyph">℞</div>
+    <div class="rx-title">Medicamentos Prescritos</div>
+  </div>
+  <div class="cuerpo" id="medicamentos"></div>
+
+  <div class="seccion-label">Pauta / Indicaciones del Tratamiento</div>
+  <div class="cuerpo" id="indicaciones"></div>
+
+  <div class="firma-wrap">
+    <div class="sello-receta">
+      <b>REGISTRO SANITARIO</b>
+      Receta Médica Certificada
+    </div>
+    <div class="raya-firma">
+      <div class="raya"></div>
+      <div class="firma-nombre" id="firma"></div>
+      <div class="firma-cargo">Firma y Sello Facultativo</div>
+    </div>
+  </div>
+
+  <div class="pie-folio">
+    <span>Expediente Clínico Centralizado</span>
+    <span>Folio Receta #<span id="num"></span></span>
+  </div>
+</div>
+
+<div class="acciones">
+  <button onclick="window.print()">Imprimir Receta</button>
+  <button class="alt" onclick="window.close()">Cerrar Ventana</button>
+</div>
+
+<script src="js/comun.js"></script>
+<script>
+function el(id) {
+  return document.getElementById(id);
+}
+
+function main() {
+  var id = new URLSearchParams(location.search).get("id");
+  el("clinica").textContent = CLINICA;
+  http_call("GET", "/recetas/" + id, null).then(function (r) {
+    if (r.code != OK) {
+      el("hoja").innerHTML = "<p class='err'>errno = " + r.code + "  (" + msg_of(r) + ")</p>";
+      return;
+    }
+    var x = r.data;
+    el("medico").textContent = "Dr(a). " + x.medico;
+    el("especialidad").textContent = x.especialidad;
+    el("exequatur").textContent = x.exequatur;
+    el("paciente").textContent = x.paciente;
+    el("cedula").textContent = x.cedula;
+    el("edad").textContent = edad(x.nacimiento) + " años";
+    el("fecha").textContent = x.fecha;
+    el("medicamentos").textContent = x.medicamentos;
+    el("indicaciones").textContent = x.indicaciones;
+    el("firma").textContent = "Dr(a). " + x.medico;
+    el("num").textContent = x.id;
+  });
+  return 0;
+}
+
+main();
+</script>
+</body>
+</html>

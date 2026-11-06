@@ -1,0 +1,12 @@
+com\zip\clinica\RecetaController.class
+com\zip\clinica\ClinicaApplication.class
+com\zip\clinica\MedicoController.class
+com\zip\clinica\Consulta.class
+com\zip\clinica\Cita.class
+com\zip\clinica\Util.class
+com\zip\clinica\HistorialController.class
+com\zip\clinica\Medico.class
+com\zip\clinica\PacienteController.class
+com\zip\clinica\Paciente.class
+com\zip\clinica\CitaController.class
+com\zip\clinica\Receta.class
